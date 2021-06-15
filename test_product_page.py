@@ -12,7 +12,7 @@ class TestUserAddToBasketFromProductPage():
 	def setup(self, driver):
 		link = 'http://selenium1py.pythonanywhere.com/ru/accounts/login/'
 		login_page = LoginPage(driver, link)					# инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес 
-		page.open()												# открываем страницу
+		login_page.open()												# открываем страницу
 		email = str(time.time()) + "@fakemail.org"				# генерирование рандомных email -ов 
 		login_page.register_new_user(email, 'QWer3213ty123')	# регистрция нового пользователя
 		login_page.should_be_authorized_user()					# проверка на авторизиацию
@@ -38,9 +38,9 @@ class TestUserAddToBasketFromProductPage():
 		link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1"
 		product_page = ProductPage(driver, link)	# инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес 
 		product_page.open()							# открытие страницы
-		product_page.shold_be_add_button()			#
-		product_page.add_to_card()					#
-		product_page.shold_be_message_add()			#
+		product_page.shold_be_add_button()			
+		product_page.add_to_card()					
+		product_page.shold_be_message_add()			
 
 	def test_guest_cant_see_product_in_basket_opened_from_product_page(self, driver):
 		link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-shellcoders-handbook_209/"
