@@ -24,11 +24,11 @@ class TestLoginFromMainPage():
 
 def test_guest_cant_see_product_in_basket_opened_from_main_page(driver):
 	link = "http://selenium1py.pythonanywhere.com/en-gb/"
-	page = MainPage(driver, link)
-	page.open()
-	page.should_be_basket_button()
-	page.go_to_the_basket_in_havbar()
-	basket_page = BasketPage(driver, driver.current_url)
-	time.sleep(2)
-	basket_page.should_not_be_item_in_basket()
-	basket_page.should_be_message_on_empty_bucket()
+	page = MainPage(driver, link)							# инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес 
+	page.open()												# открываем страницу
+	page.should_be_basket_button()							# проверка на нахождение корзины в шапке
+	page.go_to_the_basket_in_havbar() 						# переход в страницу корзины
+	basket_page = BasketPage(driver, driver.current_url)	# инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес 
+	time.sleep(2)											# (были мои тесты, можно удалить)
+	basket_page.should_not_be_item_in_basket()				# проверка на отсутсвие товара
+	basket_page.should_be_message_on_empty_bucket()			# проверка на присутсвие сообщения об отсуствии товара
