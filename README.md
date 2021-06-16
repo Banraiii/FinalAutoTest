@@ -1,7 +1,7 @@
 # FinalAutoTest
 This repository is intended for the final test after completing the course from stepik
 
-## Используемые старонние библиотеки 
+## Используемые библиотеки 
 
 Клонируйте или загрузите этот репозиторий и откройте его в выбранном вами редакторе. В терминале (mac/linux) или терминале Windows выполните следующую команду в базовом каталоге этого проекта
 
