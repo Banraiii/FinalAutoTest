@@ -7,3 +7,7 @@ python3-openid==3.2.0
 requests
 requests-oauthlib
 selenium
+pytest==6.2.2
+pytest-html==3.1.1
+pytest-metadata==1.11.0
+pytest-rerunfailures==9.1.1
