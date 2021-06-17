@@ -4,6 +4,7 @@ from .pages.basket_page import BasketPage
 from .pages.login_page import LoginPage
 import time
 import pytest
+import logging
 
 @pytest.mark.need_review
 class TestUserAddToBasketFromProductPage():
@@ -52,8 +53,10 @@ class TestUserAddToBasketFromProductPage():
 		basket_page.should_not_be_item_in_basket()
 		basket_page.should_be_message_on_empty_bucket()
 
-	def test_guest_can_go_to_login_page_from_product_page(self, driver):
+	@pytest.mark.win10
+	def test_guest_can_go_to_login_page_from_product_page(self, driver, logg):
+		logg.warning("This is warning message")
 		link = "http://selenium1py.pythonanywhere.com/en-gb/"
 		page = ProductPage(driver, link)
 		page.open()
-		page.go_to_login_page()
+		page.go_to_login_page()	
