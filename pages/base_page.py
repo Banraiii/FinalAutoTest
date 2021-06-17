@@ -1,11 +1,13 @@
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, NoAlertPresentException
 import math
 from .locators import ProductPageLocators, BasePageLocators, MainPageLocators
+from .loggers import logging
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
+
 
 class BasePage:
 	def __init__(self, driver, url):
@@ -23,8 +25,10 @@ class BasePage:
 			if (self.driver.find_element(*ProductPageLocators.H1_FIND).text) == str(self.driver.find_elements(how, what)[0].text):
 				return True
 			else:
+				logging.error("Error message!")
 				return False
 		except NoSuchElementException:
+			logging.error("Error message!")
 			return False
 
 	def total_price_shold_be_equal_item_by_css(self, how, what, baskethow, basketwhat):
@@ -35,6 +39,7 @@ class BasePage:
 			WebDriverWait(self.driver, 12).until(ec)
 
 		except NoSuchElementException:
+			logging.error("Error message!")
 			return False
 		return True
 
@@ -43,8 +48,10 @@ class BasePage:
 			if 'added to your basket' in str(self.driver.find_elements(how, what)[0].text):
 				return True
 			else:
+				logging.error("Error message!")
 				return False
 		except NoSuchElementException:
+			logging.error("Error message!")
 			return False
 
 	def solve_quiz_and_get_code(self):
@@ -59,12 +66,14 @@ class BasePage:
 			print(f"Ваш код: {alert_text}")
 			alert.accept()
 		except NoAlertPresentException:
+			logging.warning("Второго предупреждения не было")
 			print('Второго предупреждения не было')
 
 	def is_element_present(self, how, what):
 		try:
 			self.driver.find_element(how, what)
 		except NoSuchElementException:
+			logging.error("Error message!")
 			return False
 		return True
 
@@ -74,7 +83,7 @@ class BasePage:
 			WebDriverWait(self.driver, timeout).until(es)
 		except TimeoutException:
 			return True
-		
+		logging.error("Error message!")
 		return False
 
 	def is_disappeared(self, how, what, timeout=4):
@@ -102,14 +111,17 @@ class BasePage:
 			if 'Your basket is empty' in str(self.driver.find_element(how, what).text):
 				return True
 			else:
+				logging.error("Error message!")
 				return False
 		except NoSuchElementException:
+			logging.error("Error message!")
 			return False
 
 	def in_element(self, string, understr):
 		if understr in string:
 			return True
 		else:
+			logging.error("Error message!")
 			return False
 
 	def completion_email_fields(self, how, what, email):
@@ -117,6 +129,7 @@ class BasePage:
 			field = self.driver.find_elements(how, what)[0]
 			field.send_keys(f'{ email }')
 		except NoSuchElementException:
+			logging.error("Error message!")
 			return False
 		return True 
 
@@ -125,6 +138,7 @@ class BasePage:
 			field = self.driver.find_elements(how, what)[1]
 			field.send_keys(f'{ password }')
 		except NoSuchElementException:
+			logging.error("Error message!")
 			return False
 		return True 
 
@@ -134,7 +148,9 @@ class BasePage:
 			field = self.driver.find_elements(how, what)[2]
 			field.send_keys(f'{ password }')
 		except NoSuchElementException:
+			logging.error("Error message!")
 			return False
+
 		return True 
 
 
@@ -143,5 +159,6 @@ class BasePage:
 			btn = self.driver.find_element(how, what)
 			btn.click()
 		except NoSuchElementException:
+			logging.error("Error message!")
 			return False
 		return True 

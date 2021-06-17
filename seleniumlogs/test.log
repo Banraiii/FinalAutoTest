@@ -1,3 +1,15 @@
-2021-06-17 10:40:20,242: DEBUG: This is debug message
-2021-06-17 10:40:20,243: INFO: Starting webdriver
-2021-06-17 10:40:20,243: WARNING: This is warning message
+2021-06-17 12:05:15,507: INFO: Starting webdriver
+2021-06-17 12:06:20,343: INFO: Starting webdriver
+2021-06-17 12:06:22,806: WARNING: This is warning message
+2021-06-17 13:34:05,769: INFO: Starting webdriver
+2021-06-17 13:34:14,678: INFO: Starting webdriver
+2021-06-17 13:39:52,328: INFO: Starting webdriver
+2021-06-17 13:40:17,772: INFO: Starting webdriver
+2021-06-17 13:40:19,888: ERROR: Error message!
+2021-06-17 13:40:41,087: INFO: Starting webdriver
+2021-06-17 13:40:43,326: ERROR: Error message!
+2021-06-17 13:40:46,568: INFO: Starting webdriver
+2021-06-17 13:40:48,803: ERROR: Error message!
+2021-06-17 13:40:51,946: INFO: Starting webdriver
+2021-06-17 13:40:54,006: ERROR: Error message!
+2021-06-17 13:41:02,615: INFO: Starting webdriver

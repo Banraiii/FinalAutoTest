@@ -3,7 +3,7 @@ import logging
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-
+from .pages.loggers import logging
 
 def pytest_addoption(parser):
     parser.addoption('--language', action='store', default='en',
@@ -11,6 +11,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope='function')
 def driver(request):
+    logging.info("Starting webdriver")
     user_language = request.config.getoption('language')
     print("\nстарт браузера для тестирования..")
     options = Options()
@@ -19,16 +20,3 @@ def driver(request):
     yield driver
     print('\nбраузер для тестирования закрывается.')
     driver.quit()
-
-@pytest.fixture(scope='session')
-def logg():
-    current_dir = os.path.abspath(os.path.dirname(__file__))
-    file_path = os.path.join(current_dir, r'seleniumlogs\test.log')
-    file_path = str(file_path).replace('\\','//')
-    print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n',file_path, 'test')
-    logging.basicConfig(filename=file_path,
-                        format='%(asctime)s: %(levelname)s: %(message)s',
-                        level=logging.DEBUG
-                        )
-    logging.info("Starting webdriver")
-    return logging
